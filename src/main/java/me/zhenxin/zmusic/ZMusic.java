@@ -1,15 +1,16 @@
 package me.zhenxin.zmusic;
 
-import lombok.extern.slf4j.Slf4j;
 import me.zhenxin.zmusic.event.PacketEvent;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.util.Identifier;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.nio.charset.StandardCharsets;
 
-@Slf4j(topic = "ZMusic")
 public class ZMusic implements ModInitializer {
+    public static final Logger LOGGER = LoggerFactory.getLogger(ZMusic.class);
     public static final Identifier IDENTIFIER = new Identifier("zmusic", "channel");
 
     @Override
@@ -24,6 +25,6 @@ public class ZMusic implements ModInitializer {
                     PacketEvent.onPacket(message);
                 }
         );
-        log.info("ZMusic has been initialized.");
+        LOGGER.info("ZMusic has been initialized.");
     }
 }

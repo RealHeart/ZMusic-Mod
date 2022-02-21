@@ -1,7 +1,7 @@
 package me.zhenxin.zmusic.event;
 
-import lombok.extern.slf4j.Slf4j;
 import me.zhenxin.zmusic.State;
+import me.zhenxin.zmusic.ZMusic;
 import me.zhenxin.zmusic.player.MusicPlayer;
 
 /**
@@ -11,11 +11,10 @@ import me.zhenxin.zmusic.player.MusicPlayer;
  * @since 2022/2/20 11:21
  */
 @SuppressWarnings("AlibabaAvoidManuallyCreateThread")
-@Slf4j(topic = "ZMusic")
 public class PacketEvent {
     public static void onPacket(String message) {
         new Thread(() -> {
-            log.debug("Received message: {}", message);
+            ZMusic.LOGGER.debug("Received message: {}", message);
             if (message.startsWith("[Play]")) {
                 String data = message.replace("[Play]", "");
                 onPlay(data);
@@ -42,7 +41,7 @@ public class PacketEvent {
      * @param data 数据
      */
     public static void onPlay(String data) {
-        log.info("Play music from {}", data);
+        ZMusic.LOGGER.info("Play music from {}", data);
         if (State.player == null) {
             State.player = new MusicPlayer();
         }

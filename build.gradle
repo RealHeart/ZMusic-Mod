@@ -32,13 +32,6 @@ dependencies {
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-    compileOnly "org.projectlombok:lombok:${project.lombok_version}"
-    annotationProcessor "org.projectlombok:lombok:${project.lombok_version}"
-
-    testCompileOnly "org.projectlombok:lombok:${project.lombok_version}"
-    testAnnotationProcessor "org.projectlombok:lombok:${project.lombok_version}"
-
-
     implementation "com.googlecode.soundlibs:mp3spi:1.9.5.4"
     implementation "org.jflac:jflac-codec:1.5.2"
 
