@@ -25,7 +25,7 @@ public class MusicPlayer {
             line.open(format);
             line.start();
             byte[] buffer = new byte[1024];
-            int len = -1;
+            int len;
             while ((len = audio.read(buffer)) > 0) {
                 line.write(buffer, 0, len);
             }

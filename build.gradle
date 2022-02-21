@@ -11,7 +11,10 @@ version = project.mod_version
 group = project.maven_group
 
 repositories {
-    mavenCentral()
+    maven {
+        name = 'Aliyun'
+        url = 'https://maven.aliyun.com/repository/public/'
+    }
 
     // Add repositories to retrieve artifacts from in here.
     // You should only use this when depending on other mods because
@@ -35,10 +38,14 @@ dependencies {
     testCompileOnly "org.projectlombok:lombok:${project.lombok_version}"
     testAnnotationProcessor "org.projectlombok:lombok:${project.lombok_version}"
 
-    include 'com.googlecode.soundlibs:tritonus-share:0.3.7.4'
+
+    implementation "com.googlecode.soundlibs:mp3spi:1.9.5.4"
+    implementation "org.jflac:jflac-codec:1.5.2"
+
+    include "com.googlecode.soundlibs:tritonus-share:0.3.7.4"
     include "com.googlecode.soundlibs:jlayer:1.0.1.4"
     include "com.googlecode.soundlibs:mp3spi:1.9.5.4"
-    include 'org.jflac:jflac-codec:1.5.2'
+    include "org.jflac:jflac-codec:1.5.2"
 
 }
 
