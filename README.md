@@ -1,3 +1,3 @@
 # ZMusic
 
-ZMusic Mod for Fabric
+ZMusic Mod

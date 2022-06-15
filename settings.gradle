@@ -1,13 +1,21 @@
 pluginManagement {
     repositories {
+        gradlePluginPortal()
         maven {
-            name = 'Aliyun'
-            url = 'https://maven.aliyun.com/repository/public/'
+            name = 'Forge'
+            url = 'https://maven.minecraftforge.net/'
         }
         maven {
             name = 'Fabric'
             url = 'https://maven.fabricmc.net/'
         }
-        gradlePluginPortal()
     }
 }
+
+rootProject.name = "zmusic"
+include(
+        "common",
+        "fabric",
+        "forge-active",
+        "forge-legacy"
+)

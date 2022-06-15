@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "zmusic",
+  "version": "${version}",
+  "name": "ZMusic Mod",
+  "description": "ZMusic - Powerful Music System",
+  "authors": [
+    "ZhenXin"
+  ],
+  "contact": {
+    "homepage": "https://m.zplu.cc",
+    "sources": "https://github.com/RealHeart/ZMusic",
+    "issues": "https://github.com/RealHeart/ZMusic/issues",
+    "discord": "https://discord.gg/twQgJNufYn"
+  },
+  "license": "GPL-3.0-only",
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      "me.zhenxin.zmusic.ZMusic"
+    ]
+  },
+  "mixins": [
+    "zmusic.mixins.json"
+  ]
+}
