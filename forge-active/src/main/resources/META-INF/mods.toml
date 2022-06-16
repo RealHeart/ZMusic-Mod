@@ -6,7 +6,7 @@ issueTrackerURL = "https://github.com/RealHeart/ZMusic/issues"
 modId = "zmusic"
 version = "${version}"
 displayName = "ZMusic Mod"
-description = "ZMusic - Powerful Music System"
+description = "Powerful Music System"
 displayURL = "https://m.zplu.cc"
 authors = "ZhenXin"
 [[dependencies.zmusic]]

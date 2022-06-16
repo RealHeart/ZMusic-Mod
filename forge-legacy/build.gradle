@@ -1,0 +1,6 @@
+jar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from configurations.embed.collect {
+        it.isDirectory() ? it : zipTree(it)
+    }
+}

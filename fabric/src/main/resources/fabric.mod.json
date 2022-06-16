@@ -3,7 +3,7 @@
   "id": "zmusic",
   "version": "${version}",
   "name": "ZMusic Mod",
-  "description": "ZMusic - Powerful Music System",
+  "description": "Powerful Music System",
   "authors": [
     "ZhenXin"
   ],
@@ -17,10 +17,11 @@
   "environment": "client",
   "entrypoints": {
     "main": [
-      "me.zhenxin.zmusic.ZMusic"
+      "me.zhenxin.zmusic.ZMusicMod"
     ]
   },
-  "mixins": [
-    "zmusic.mixins.json"
-  ]
+  "depends": {
+    "fabricloader": ">=0.4.0",
+    "fabric": ">=0.28.5"
+  }
 }

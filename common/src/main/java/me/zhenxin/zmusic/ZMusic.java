@@ -1,17 +1,17 @@
 package me.zhenxin.zmusic;
 
-import net.minecraftforge.fml.common.Mod;
+import me.zhenxin.zmusic.player.MusicPlayer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * ZMusic Mod 主入口 Forge
+ * ZMusic
  *
  * @author 真心
- * @since 2022/6/15 22:22
+ * @since 2022/6/16 17:42
  */
-@Mod("zmusic")
 public class ZMusic {
+    public static MusicPlayer player;
 
     public static Logger getLogger() {
         return LoggerFactory.getLogger(ZMusic.class);

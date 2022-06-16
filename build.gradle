@@ -1,7 +1,7 @@
 def gitCommitHash = {
     def cmd = "git rev-parse --short HEAD"
     try {
-        return "-" + cmd.execute().text.trim()
+        return "+" + cmd.execute().text.trim()
     } catch (Exception e) {
         e.printStackTrace()
         return ""
@@ -11,26 +11,42 @@ def gitCommitHash = {
 allprojects {
     repositories {
         maven {
-            name = "阿里云"
+            name = "Alyun"
             url = "https://maven.aliyun.com/repository/public/"
         }
+        maven {
+            name = 'Jitpack'
+            url = 'https://jitpack.io'
+        }
     }
-    group = "me.zhenxin"
-    version = "3.0.0" + gitCommitHash()
+}
+
+configurations {
+    embed
+    compile.extendsFrom(embed)
 }
 
 subprojects {
     apply plugin: 'java'
+    apply plugin: "java-library"
+
+    group = "me.zhenxin"
+    version = "3.0.0" + gitCommitHash()
 
     archivesBaseName = rootProject.name + "-" + project.name
 
-    tasks.withType(JavaCompile) {
-        options.encoding = 'UTF-8'
+    configurations {
+        embed
+        compile.extendsFrom(embed)
     }
 
     jar {
         from("${rootDir}/LICENSE") {
             rename { "${it}_${rootProject.name}" }
         }
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
     }
 }
