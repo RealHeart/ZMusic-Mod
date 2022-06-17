@@ -33,7 +33,7 @@ subprojects {
     group = "me.zhenxin"
     version = "3.0.0" + gitCommitHash()
 
-    archivesBaseName = rootProject.name + "-" + project.name
+    archivesBaseName = "${rootProject.name}-${project.name}"
 
     configurations {
         embed

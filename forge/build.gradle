@@ -2,30 +2,24 @@ plugins {
     id 'net.minecraftforge.gradle' version '5.1.+'
 }
 
+sourceCompatibility = JavaVersion.VERSION_16
+targetCompatibility = JavaVersion.VERSION_16
+
 minecraft {
     mappings channel: 'official', version: '1.17.1'
-    runs {
-        client {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            property 'forge.enabledGameTestNamespaces', 'examplemod'
-
-            mods {
-                examplemod {
-                    source sourceSets.main
-                }
-            }
-        }
-    }
 }
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.17.1-37.1.1'
 
+    implementation fileTree(dir: 'libs', includes: ['*.jar'])
+
     implementation project(":common")
-    embed project(":common")
+    embed(project(":common")) {
+        exclude module: 'slf4j-api'
+        exclude module: 'commons-io'
+        exclude module: 'junit'
+    }
 }
 
 processResources {
@@ -46,7 +40,7 @@ jar {
         attributes([
                 "Specification-Title"     : "zmusic",
                 "Specification-Vendor"    : "ZhenXin",
-                "Specification-Version"   : "1", // We are version 1 of ourselves
+                "Specification-Version"   : "1",
                 "Implementation-Title"    : "ZMusic Mod",
                 "Implementation-Version"  : project.version,
                 "Implementation-Vendor"   : "ZhenXin",
