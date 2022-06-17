@@ -17,6 +17,10 @@ public class ClientEvent {
         PacketEvent.onStop();
     }
 
+    public static void onSound() {
+
+    }
+
     public static void onPacket(PacketByteBuf buf) {
         byte[] buffer = new byte[buf.readableBytes()];
         buf.readBytes(buffer);

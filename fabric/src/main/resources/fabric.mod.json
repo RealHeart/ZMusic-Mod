@@ -23,5 +23,8 @@
   "depends": {
     "fabricloader": ">=0.4.0",
     "fabric": ">=0.28.5"
-  }
+  },
+  "mixins": [
+    "zmusic.mixins.json"
+  ]
 }
