@@ -1,0 +1,54 @@
+plugins {
+    id 'net.minecraftforge.gradle' version '5.1.+'
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+minecraft {
+    mappings channel: 'official', version: '1.16.5'
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.16.5-36.2.35'
+
+    implementation project(":common")
+    embed(project(":common")) {
+        exclude module: 'commons-io'
+        exclude module: 'junit'
+    }
+}
+
+processResources {
+    inputs.property "version", project.version
+
+    filesMatching("META-INF/mods.toml") {
+        expand "version": project.version
+    }
+
+    filesMatching("mcmod.info") {
+        expand "version": project.version
+    }
+}
+
+jar {
+    exclude 'net/minecraft/**' // Minecraft
+    exclude 'net/minecraftforge/**' // Minecraft Forge
+
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from configurations.embed.collect {
+        it.isDirectory() ? it : zipTree(it)
+    }
+
+    manifest {
+        attributes([
+                "Specification-Title"     : "zmusic",
+                "Specification-Vendor"    : "ZhenXin",
+                "Specification-Version"   : "1",
+                "Implementation-Title"    : "ZMusic Mod",
+                "Implementation-Version"  : project.version,
+                "Implementation-Vendor"   : "ZhenXin",
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
+    }
+}
