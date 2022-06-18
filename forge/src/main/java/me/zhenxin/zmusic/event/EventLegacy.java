@@ -15,7 +15,7 @@ import java.util.function.Supplier;
  */
 public class EventLegacy {
     public EventLegacy(){
-        SimpleChannel channel = NetworkRegistry.newSimpleChannel(new ResourceLocation("allmusic", "channel"),
+        SimpleChannel channel = NetworkRegistry.newSimpleChannel(new ResourceLocation("zmusic", "channel"),
                 () -> "1.0", s -> true, s -> true);
         channel.registerMessage(666, String.class, this::enc, this::dec, this::proc);
     }
