@@ -1,5 +1,6 @@
-package me.zhenxin.zmusic.event;
+package me.zhenxin.zmusic.channel;
 
+import me.zhenxin.zmusic.event.ClientEvent;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.fmllegacy.network.NetworkEvent;
@@ -13,8 +14,8 @@ import java.util.function.Supplier;
  * @author 真心
  * @since 2022/6/17 20:20
  */
-public class EventLegacy {
-    public EventLegacy(){
+public class ChannelRegistryLegacy {
+    public ChannelRegistryLegacy(){
         SimpleChannel channel = NetworkRegistry.newSimpleChannel(new ResourceLocation("zmusic", "channel"),
                 () -> "1.0", s -> true, s -> true);
         channel.registerMessage(666, String.class, this::enc, this::dec, this::proc);

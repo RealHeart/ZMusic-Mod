@@ -16,7 +16,6 @@ dependencies {
 
     implementation project(":common")
     embed(project(":common")) {
-        exclude module: 'slf4j-api'
         exclude module: 'commons-io'
         exclude module: 'junit'
     }

@@ -1,11 +1,10 @@
 package me.zhenxin.zmusic;
 
-import me.zhenxin.zmusic.event.ClientEvent;
-import me.zhenxin.zmusic.event.EventActive;
-import me.zhenxin.zmusic.event.EventLegacy;
+import me.zhenxin.zmusic.channel.ChannelRegistryActive;
+import me.zhenxin.zmusic.channel.ChannelRegistryLegacy;
 import me.zhenxin.zmusic.player.MusicPlayer;
 import me.zhenxin.zmusic.player.impl.SoundVolumeForge;
-import net.minecraft.network.chat.ClickEvent;
+import me.zhenxin.zmusic.utils.impl.LoggerForge;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -19,10 +18,10 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
  * @since 2022/6/15 22:22
  */
 @Mod("zmusic")
-public class ZMusicMod {
+public class ForgeMod {
 
 
-    public ZMusicMod() {
+    public ForgeMod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::setup);
         MinecraftForge.EVENT_BUS.register(this);
@@ -30,11 +29,12 @@ public class ZMusicMod {
 
     private void setup(FMLClientSetupEvent event) {
         ZMusic.player = new MusicPlayer(new SoundVolumeForge());
+        ZMusic.setLogger(new LoggerForge());
 
         try {
-            new EventActive();
-        } catch (Exception e) {
-            new EventLegacy();
+            new ChannelRegistryActive();
+        } catch (Throwable t) {
+            new ChannelRegistryLegacy();
         }
 
         ZMusic.getLogger().info("Welcome use ZMusic Mod!");

@@ -1,8 +1,7 @@
 package me.zhenxin.zmusic;
 
 import me.zhenxin.zmusic.player.MusicPlayer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import me.zhenxin.zmusic.utils.Logger;
 
 /**
  * ZMusic
@@ -13,7 +12,13 @@ import org.slf4j.LoggerFactory;
 public class ZMusic {
     public static MusicPlayer player;
 
+    private static Logger logger;
+
     public static Logger getLogger() {
-        return LoggerFactory.getLogger(ZMusic.class);
+        return logger;
+    }
+
+    public static void setLogger(Logger logger) {
+        ZMusic.logger = logger;
     }
 }

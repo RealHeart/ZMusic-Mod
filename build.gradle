@@ -2,11 +2,8 @@ def gitCommitHash = {
     def cmd = "git rev-parse --short HEAD"
     try {
         def ver = cmd.execute().text.trim()
-        if (ver == "") {
-            return "+" + ver
-        } else {
-            return ""
-        }
+        if (ver == "") return ""
+        return "+" + ver
     } catch (Exception e) {
         e.printStackTrace()
         return ""
@@ -32,7 +29,6 @@ configurations {
 }
 
 subprojects {
-    apply plugin: 'java'
     apply plugin: "java-library"
 
     group = "me.zhenxin"
@@ -46,9 +42,7 @@ subprojects {
     }
 
     jar {
-        from("${rootDir}/LICENSE") {
-            rename { "${it}_${rootProject.name}" }
-        }
+        from("${rootDir}/LICENSE")
     }
 
     tasks.withType(JavaCompile) {

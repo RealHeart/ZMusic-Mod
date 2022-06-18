@@ -20,5 +20,6 @@ rootProject.name = "zmusic"
 include(
         "common",
         "fabric",
-        "forge"
+        "forge",
+        "forge-legacy"
 )

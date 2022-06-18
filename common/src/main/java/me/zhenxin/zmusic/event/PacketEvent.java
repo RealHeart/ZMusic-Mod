@@ -2,9 +2,6 @@ package me.zhenxin.zmusic.event;
 
 import com.goxr3plus.streamplayer.enums.Status;
 import me.zhenxin.zmusic.ZMusic;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.sounds.SoundManager;
-import net.minecraft.sounds.SoundSource;
 
 import java.net.URL;
 
@@ -22,10 +19,7 @@ public class PacketEvent {
      * @param data 数据
      */
     public static void onPlay(String data) {
-        SoundManager manager = Minecraft.getInstance().getSoundManager();
-        manager.stop(null, SoundSource.MUSIC);
-        manager.stop(null, SoundSource.RECORDS);
-        ZMusic.getLogger().info("Play music from {}", data);
+        ZMusic.getLogger().info("Play music from " + data);
 
         if (ZMusic.player.getStatus() == Status.PLAYING) {
             ZMusic.player.stop();

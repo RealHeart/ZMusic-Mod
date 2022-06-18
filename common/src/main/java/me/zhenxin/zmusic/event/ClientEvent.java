@@ -1,9 +1,6 @@
 package me.zhenxin.zmusic.event;
 
 import me.zhenxin.zmusic.ZMusic;
-import net.minecraft.network.PacketByteBuf;
-
-import java.nio.charset.StandardCharsets;
 
 /**
  * 客户端事件
@@ -13,20 +10,13 @@ import java.nio.charset.StandardCharsets;
  */
 @SuppressWarnings({"AlibabaAvoidManuallyCreateThread", "AlibabaUndefineMagicConstant"})
 public class ClientEvent {
+
     public static void onDisconnect() {
         PacketEvent.onStop();
     }
 
-    public static void onSound() {
-
-    }
-
-    public static void onPacket(PacketByteBuf buf) {
-        byte[] buffer = new byte[buf.readableBytes()];
-        buf.readBytes(buffer);
-        buffer[0] = 0;
-        String message = new String(buffer, StandardCharsets.UTF_8).substring(1);
-        ZMusic.getLogger().info("Received message: {}", message);
+    public static void onPacket(String message) {
+        ZMusic.getLogger().info("Received message: " + message);
 
         if (message.startsWith("[Play]")) {
             String data = message.replace("[Play]", "");

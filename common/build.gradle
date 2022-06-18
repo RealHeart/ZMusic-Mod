@@ -3,6 +3,5 @@ targetCompatibility = JavaVersion.VERSION_1_8
 
 dependencies {
     api "com.github.goxr3plus:java-stream-player:10.0.2"
-    api "org.slf4j:slf4j-api:1.7.36"
     api 'commons-io:commons-io:2.11.0'
 }

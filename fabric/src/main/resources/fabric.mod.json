@@ -17,7 +17,7 @@
   "environment": "client",
   "entrypoints": {
     "main": [
-      "me.zhenxin.zmusic.ZMusicMod"
+      "me.zhenxin.zmusic.FabricMod"
     ]
   },
   "depends": {
