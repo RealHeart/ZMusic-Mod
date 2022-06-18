@@ -1,7 +1,12 @@
 def gitCommitHash = {
     def cmd = "git rev-parse --short HEAD"
     try {
-        return "+" + cmd.execute().text.trim()
+        def ver = cmd.execute().text.trim()
+        if (ver == "") {
+            return "+" + ver
+        } else {
+            return ""
+        }
     } catch (Exception e) {
         e.printStackTrace()
         return ""
@@ -31,7 +36,7 @@ subprojects {
     apply plugin: "java-library"
 
     group = "me.zhenxin"
-    version = "3.0.0" + gitCommitHash()
+    version = "3.0.0-dev" + gitCommitHash()
 
     archivesBaseName = "${rootProject.name}-${project.name}"
 
