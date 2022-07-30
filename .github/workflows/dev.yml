@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - "**.java"
+      - "**.gradle"
+      - ".github/workflows/dev.yml"
     branches:
       - "main"
 
