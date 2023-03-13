@@ -1,0 +1,36 @@
+name: Dev Build
+
+on:
+  push:
+    paths:
+      - "**.java"
+      - "**.gradle"
+      - ".github/workflows/dev.yml"
+    branches:
+      - "main"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+      - name: Setup Gradle
+        run: chmod +x gradlew
+      - name: Build with Gradle
+        run: ./gradlew clean build
+      - name: Upload Artifact (Fabric 1.19.3)
+        uses: actions/upload-artifact@v3
+        with:
+          name: 'ZMusic Fabric 1.19.3'
+          path: |
+            zmusic-fabric/zmusic-fabric-1.19.3/build/libs/**.jar
+      - name: Upload Artifact (Forge 1.19.3)
+        uses: actions/upload-artifact@v3
+        with:
+          name: 'ZMusic Forge 1.19.3'
+          path: |
+            zmusic-forge/zmusic-forge-1.19.3/build/libs/**.jar

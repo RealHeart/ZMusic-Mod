@@ -1,0 +1,24 @@
+pluginManagement {
+    repositories {
+        maven {
+            name = 'Fabric'
+            url = 'https://maven.fabricmc.net/'
+        }
+        maven {
+            name = 'Forge'
+            url = 'https://maven.minecraftforge.net/'
+        }
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = "ZMusic-Mod"
+
+include(
+        "zmusic-core",
+        "zmusic-fabric",
+        "zmusic-forge"
+)
+include("zmusic-fabric:zmusic-fabric-1.19.3")
+include("zmusic-forge:zmusic-forge-1.19.3")

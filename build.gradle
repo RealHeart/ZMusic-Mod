@@ -1,0 +1,52 @@
+def gitCommitHash = {
+    def cmd = "git rev-parse --short HEAD"
+    try {
+        def ver = cmd.execute().text.trim()
+        if (ver == "") return ""
+        return "+" + ver
+    } catch (Exception e) {
+        e.printStackTrace()
+        return ""
+    }
+}
+
+allprojects {
+    repositories {
+        maven {
+            name = 'Jitpack'
+            url = 'https://jitpack.io'
+        }
+        maven {
+            name = "TerraformersMC"
+            url = "https://maven.terraformersmc.com/releases/"
+        }
+    }
+}
+
+subprojects {
+    apply plugin: 'java-library'
+
+    group = "me.zhenxin"
+    version = "3.0.0-dev" + gitCommitHash()
+
+    dependencies {
+        compileOnly("org.projectlombok:lombok:1.18.26")
+        annotationProcessor("org.projectlombok:lombok:1.18.26")
+    }
+
+    jar {
+        from("${rootDir}/LICENSE")
+    }
+
+    processResources {
+        inputs.property "version", project.version
+
+        filesMatching("fabric.mod.json") {
+            expand "version": project.version
+        }
+    }
+
+    tasks.withType(JavaCompile).configureEach {
+        options.encoding = 'UTF-8'
+    }
+}
