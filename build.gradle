@@ -12,6 +12,7 @@ def gitCommitHash = {
 
 allprojects {
     repositories {
+        mavenCentral()
         maven {
             name = 'Jitpack'
             url = 'https://jitpack.io'

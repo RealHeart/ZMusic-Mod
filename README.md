@@ -3,7 +3,6 @@
 ![][banner]
 
 ![][java]
-![][kotlin]
 ![][license]
 
 </div>
@@ -48,7 +47,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 [banner]: https://socialify.git.ci/RealHeart/ZMusic-Mod/image?description=1&forks=1&issues=1&language=1&name=1&owner=1&pulls=1&stargazers=1&theme=Auto
 
 [java]: https://img.shields.io/badge/java-17-blue?style=for-the-badge
-
-[kotlin]: https://img.shields.io/badge/kotliin-1.8-blue?style=for-the-badge
 
 [license]: https://img.shields.io/github/license/RealHeart/ZMusic-Mod?style=for-the-badge
