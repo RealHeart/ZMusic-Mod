@@ -15,10 +15,12 @@ pluginManagement {
 
 rootProject.name = "ZMusic-Mod"
 
+include("zmusic-core")
 include(
-        "zmusic-core",
         "zmusic-fabric",
-        "zmusic-forge"
+        "zmusic-fabric:zmusic-fabric-1.19.3",
+        "zmusic-fabric:zmusic-fabric-1.18.2",
+        "zmusic-fabric:zmusic-fabric-1.17.1"
 )
-include("zmusic-fabric:zmusic-fabric-1.19.3")
-include("zmusic-forge:zmusic-forge-1.19.3")
+
+include("zmusic-forge", "zmusic-forge:zmusic-forge-1.19.3")

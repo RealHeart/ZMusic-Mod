@@ -1,7 +1,7 @@
 package me.zhenxin.zmusic.event;
 
 import com.goxr3plus.streamplayer.enums.Status;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import me.zhenxin.zmusic.ZMusic;
 
 import java.net.URL;
@@ -14,7 +14,7 @@ import java.net.URL;
  * @email qgzhenxin@qq.com
  * @since 2023/1/29 22:50
  */
-@Slf4j
+@Log4j2
 class PacketEvent {
 
     @SuppressWarnings("AlibabaAvoidManuallyCreateThread")
@@ -23,14 +23,14 @@ class PacketEvent {
         if (ZMusic.getPlayer().getStatus() == Status.PLAYING) {
             ZMusic.getPlayer().stop();
         }
-        var thread = new Thread(() -> {
+        Thread thread = new Thread(() -> {
             try {
-                var url = new URL(data);
+                URL url = new URL(data);
                 ZMusic.getPlayer().open(url);
                 ZMusic.getPlayer().play();
             } catch (Exception e) {
-                log.error("Failed to play music!");
                 e.printStackTrace();
+                log.error("Failed to play music! {}", e.getMessage());
             }
         });
         thread.setName("ZMusic player thread");

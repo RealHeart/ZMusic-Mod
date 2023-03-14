@@ -2,7 +2,7 @@ package me.zhenxin.zmusic;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import me.zhenxin.zmusic.manager.SoundManager;
 import me.zhenxin.zmusic.player.MusicPlayer;
 
@@ -15,7 +15,7 @@ import me.zhenxin.zmusic.player.MusicPlayer;
  * @since 2023/1/28 13:08
  */
 @SuppressWarnings("AlibabaClassNamingShouldBeCamel")
-@Slf4j
+@Log4j2
 public class ZMusic {
     @Getter
     private static final MusicPlayer player = new MusicPlayer();

@@ -12,7 +12,7 @@ class ClientEvent {
     @SuppressWarnings("AlibabaUndefineMagicConstant")
     public static void onPacket(String message) {
         if (message.startsWith("[Play]")) {
-            var data = message.replace("[Play]", "");
+            String data = message.replace("[Play]", "");
             PacketEvent.onPlay(data);
         } else if ("[Stop]".equals(message)) {
             PacketEvent.onStop();

@@ -3,7 +3,7 @@ package me.zhenxin.zmusic.player;
 import com.goxr3plus.streamplayer.stream.StreamPlayer;
 import com.goxr3plus.streamplayer.stream.StreamPlayerEvent;
 import com.goxr3plus.streamplayer.stream.StreamPlayerListener;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import me.zhenxin.zmusic.ZMusic;
 
 import java.util.Map;
@@ -13,7 +13,7 @@ import java.util.Map;
  * @author 真心
  * @since 2022/6/16 17:38
  */
-@Slf4j
+@Log4j2
 public class MusicPlayer extends StreamPlayer implements StreamPlayerListener {
 
     public MusicPlayer() {
