@@ -23,4 +23,9 @@ include(
         "zmusic-fabric:zmusic-fabric-1.17.1"
 )
 
-include("zmusic-forge", "zmusic-forge:zmusic-forge-1.19.3")
+include(
+        "zmusic-forge",
+        "zmusic-forge:zmusic-forge-1.19.3",
+        "zmusic-forge:zmusic-forge-1.18.2",
+        "zmusic-forge:zmusic-forge-1.17.1"
+)
