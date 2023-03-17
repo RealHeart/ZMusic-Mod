@@ -1,10 +1,10 @@
 package me.zhenxin.zmusic;
 
+import me.zhenxin.zmusic.player.MusicPlayer;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 import me.zhenxin.zmusic.manager.SoundManager;
-import me.zhenxin.zmusic.player.MusicPlayer;
 
 
 /**
@@ -14,16 +14,17 @@ import me.zhenxin.zmusic.player.MusicPlayer;
  * @email qgzhenxin@qq.com
  * @since 2023/1/28 13:08
  */
-@SuppressWarnings("AlibabaClassNamingShouldBeCamel")
+@SuppressWarnings({"AlibabaClassNamingShouldBeCamel", "AlibabaConstantFieldShouldBeUpperCase"})
 @Log4j2
 public class ZMusic {
     @Getter
-    private static final MusicPlayer player = new MusicPlayer();
+    private static MusicPlayer player;
     @Getter
     @Setter
-    private static SoundManager soundManager = null;
+    private static SoundManager soundManager;
 
     public static void onEnable() {
+        player = new MusicPlayer();
         log.info("Welcome use ZMusic Mod!");
         log.info("Homepage: https://m.zplu.cc");
         log.info("Github: https://github.com/RealHeart/ZMusic-Mod");

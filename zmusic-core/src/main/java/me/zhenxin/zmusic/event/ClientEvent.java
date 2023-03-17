@@ -7,7 +7,7 @@ package me.zhenxin.zmusic.event;
  * @email qgzhenxin@qq.com
  * @since 2023/1/29 22:52
  */
-class ClientEvent {
+public class ClientEvent {
 
     @SuppressWarnings("AlibabaUndefineMagicConstant")
     public static void onPacket(String message) {
