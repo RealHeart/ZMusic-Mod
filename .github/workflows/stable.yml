@@ -1,0 +1,40 @@
+name: Stable Build
+
+on:
+  push:
+    tags:
+      - 'v*'
+    branches:
+      - 'main'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+          cache: 'gradle'
+      - name: Setup Gradle
+        run: chmod +x gradlew
+      - name: Build with Gradle
+        run: ./gradlew clean build --no-daemon
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            zmusic-fabric/zmusic-fabric-1.14.4/build/libs/**.jar
+            zmusic-fabric/zmusic-fabric-1.15.2/build/libs/**.jar
+            zmusic-fabric/zmusic-fabric-1.16.5/build/libs/**.jar
+            zmusic-fabric/zmusic-fabric-1.17.1/build/libs/**.jar
+            zmusic-fabric/zmusic-fabric-1.18.2/build/libs/**.jar
+            zmusic-fabric/zmusic-fabric-1.19.4/build/libs/**.jar
+            zmusic-forge/zmusic-forge-1.14.4/build/libs/**.jar
+            zmusic-forge/zmusic-forge-1.15.2/build/libs/**.jar
+            zmusic-forge/zmusic-forge-1.16.5/build/libs/**.jar
+            zmusic-forge/zmusic-forge-1.17.1/build/libs/**.jar
+            zmusic-forge/zmusic-forge-1.18.2/build/libs/**.jar
+            zmusic-forge/zmusic-forge-1.19.4/build/libs/**.jar
