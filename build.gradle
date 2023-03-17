@@ -36,6 +36,17 @@ subprojects {
     }
 
     jar {
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+        from {
+            //noinspection GroovyMissingReturnStatement
+            configurations.runtimeClasspath.collect {
+                if (project.name != "zmusic-core") {
+                    if (it.name.contains("zmusic-core")) {
+                        it.isDirectory() ? it : zipTree(it)
+                    }
+                }
+            }
+        }
         from("${rootDir}/LICENSE")
     }
 

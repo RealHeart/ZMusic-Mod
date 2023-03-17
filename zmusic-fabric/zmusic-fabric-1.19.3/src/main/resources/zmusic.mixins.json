@@ -5,6 +5,9 @@
   "injectors": {
     "defaultRequire": 1
   },
-  "mixins": [
+  "client": [
+    "QuitServer",
+    "SoundEvent",
+    "Tick"
   ]
 }

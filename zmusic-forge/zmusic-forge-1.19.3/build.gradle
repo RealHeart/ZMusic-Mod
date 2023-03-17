@@ -26,15 +26,6 @@ processResources {
 }
 
 jar {
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-    from {
-        configurations.runtimeClasspath.collect {
-            if (it.name.contains("zmusic-core")) {
-                it.isDirectory() ? it : zipTree(it)
-            }
-        }
-    }
-
     manifest {
         attributes([
                 "Specification-Title"     : "zmusic",
