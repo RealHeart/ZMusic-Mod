@@ -1,0 +1,40 @@
+//file:noinspection GroovyMissingReturnStatement
+
+plugins {
+    id 'net.minecraftforge.gradle' version '5.1.+'
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+minecraft {
+    mappings channel: 'snapshot', version: '20200514-1.15.1'
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.15.2-31.2.57'
+
+    implementation project(":zmusic-core")
+}
+
+processResources {
+    inputs.property "version", project.version
+
+    filesMatching("META-INF/mods.toml") {
+        expand "version": project.version
+    }
+}
+
+jar {
+    manifest {
+        attributes([
+                "Specification-Title"     : "zmusic",
+                "Specification-Vendor"    : "ZhenXin",
+                "Specification-Version"   : "1",
+                "Implementation-Title"    : "ZMusic Mod",
+                "Implementation-Version"  : project.version,
+                "Implementation-Vendor"   : "ZhenXin",
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
+    }
+}

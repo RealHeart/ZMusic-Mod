@@ -1,6 +1,7 @@
 package me.zhenxin.zmusic;
 
 import me.zhenxin.zmusic.event.ClientEvent;
+import me.zhenxin.zmusic.event.ForgeEvent;
 import me.zhenxin.zmusic.manager.SoundManagerImpl;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -29,7 +30,7 @@ public class ZMusicMod {
     public ZMusicMod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::setup);
-        MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(new ForgeEvent());
     }
 
     private void setup(FMLClientSetupEvent event) {

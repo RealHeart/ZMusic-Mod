@@ -1,19 +1,18 @@
 package me.zhenxin.zmusic;
 
-import me.zhenxin.zmusic.ZMusic;
 import me.zhenxin.zmusic.event.ClientEvent;
 import me.zhenxin.zmusic.event.ForgeEvent;
 import me.zhenxin.zmusic.manager.SoundManagerImpl;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.PacketBuffer;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.network.NetworkEvent;
-import net.minecraftforge.network.NetworkRegistry;
-import net.minecraftforge.network.simple.SimpleChannel;
+import net.minecraftforge.fml.network.NetworkEvent;
+import net.minecraftforge.fml.network.NetworkRegistry;
+import net.minecraftforge.fml.network.simple.SimpleChannel;
 
 import java.nio.charset.StandardCharsets;
 import java.util.function.Supplier;
@@ -42,12 +41,12 @@ public class ZMusicMod {
         ZMusic.onEnable();
     }
 
-    private void enc(String str, FriendlyByteBuf buffer) {
+    private void enc(String str, PacketBuffer buffer) {
         buffer.writeBytes(str.getBytes(StandardCharsets.UTF_8));
     }
 
 
-    private String dec(FriendlyByteBuf buffer) {
+    private String dec(PacketBuffer buffer) {
         return buffer.toString(StandardCharsets.UTF_8);
     }
 
