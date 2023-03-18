@@ -6,11 +6,11 @@ sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
 minecraft {
-    mappings channel: 'snapshot', version: '20190719-1.14.3'
+    mappings channel: 'snapshot', version: '20171003-1.12'
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.14.4-28.2.26'
+    minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2859'
 
     implementation project(":zmusic-core")
 }

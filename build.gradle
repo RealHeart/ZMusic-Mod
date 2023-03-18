@@ -47,13 +47,36 @@ subprojects {
                 }
             }
         }
+
         from("${rootDir}/LICENSE")
+
+        if (project.name.contains("zmusic-forge-1")) {
+            manifest {
+                attributes([
+                        "Specification-Title"     : "zmusic",
+                        "Specification-Vendor"    : "ZhenXin",
+                        "Specification-Version"   : "1",
+                        "Implementation-Title"    : "ZMusic Mod",
+                        "Implementation-Version"  : project.version,
+                        "Implementation-Vendor"   : "ZhenXin",
+                        "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+                ])
+            }
+        }
     }
 
     processResources {
         inputs.property "version", project.version
 
         filesMatching("fabric.mod.json") {
+            expand "version": project.version
+        }
+
+        filesMatching("META-INF/mods.toml") {
+            expand "version": project.version
+        }
+
+        filesMatching("mcmod.info") {
             expand "version": project.version
         }
     }
