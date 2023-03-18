@@ -109,3 +109,10 @@ jobs:
           name: 'ZMusic Forge 1.14.4'
           path: |
             zmusic-forge/zmusic-forge-1.14.4/build/libs/**.jar
+      # Forge 1.12.2
+      - name: Upload Artifact (Forge 1.12.2)
+        uses: actions/upload-artifact@v3
+        with:
+          name: 'ZMusic Forge 1.12.2'
+          path: |
+            zmusic-forge/zmusic-forge-1.12.2/build/libs/**.jar

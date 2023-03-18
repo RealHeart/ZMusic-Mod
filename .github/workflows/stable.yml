@@ -30,6 +30,7 @@ jobs:
             zmusic-fabric/zmusic-fabric-1.17.1/build/libs/**.jar
             zmusic-fabric/zmusic-fabric-1.18.2/build/libs/**.jar
             zmusic-fabric/zmusic-fabric-1.19.4/build/libs/**.jar
+            zmusic-forge/zmusic-forge-1.12.2/build/libs/**.jar
             zmusic-forge/zmusic-forge-1.14.4/build/libs/**.jar
             zmusic-forge/zmusic-forge-1.15.2/build/libs/**.jar
             zmusic-forge/zmusic-forge-1.16.5/build/libs/**.jar
