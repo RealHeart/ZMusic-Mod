@@ -1,25 +1,19 @@
 package me.zhenxin.zmusic.player;
 
+import lombok.extern.log4j.Log4j2;
+import me.zhenxin.zmusic.ZMusic;
 import me.zhenxin.zmusic.player.decoder.BuffPack;
 import me.zhenxin.zmusic.player.decoder.IDecoder;
 import me.zhenxin.zmusic.player.decoder.flac.FlacDecoder;
 import me.zhenxin.zmusic.player.decoder.mp3.Mp3Decoder;
 import me.zhenxin.zmusic.player.decoder.ogg.OggDecoder;
-import lombok.extern.log4j.Log4j2;
-import me.zhenxin.zmusic.ZMusic;
-import org.apache.http.ConnectionClosedException;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.HttpClientBuilder;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.openal.AL10;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.SocketException;
 import java.net.URL;
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
@@ -31,9 +25,8 @@ import java.util.concurrent.*;
 @Log4j2
 public class MusicPlayer extends InputStream {
 
-    private HttpClient client;
+    private HttpURLConnection connection;
     private String url;
-    private HttpGet get;
     private InputStream content;
 
     private boolean isClose = false;
@@ -54,7 +47,6 @@ public class MusicPlayer extends InputStream {
     public MusicPlayer() {
         try {
             new Thread(this::run, "zmusic-player-thread").start();
-            client = HttpClientBuilder.create().useSystemProperties().build();
             ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
             service.scheduleAtFixedRate(this::run1, 0, 10, TimeUnit.MILLISECONDS);
         } catch (Exception e) {
@@ -111,13 +103,19 @@ public class MusicPlayer extends InputStream {
     }
 
     public void connect() throws IOException {
-        getClose();
         streamClose();
-        get = new HttpGet(url);
-        get.setHeader("Range", "bytes=" + local + "-");
-        HttpResponse response = this.client.execute(get);
-        HttpEntity entity = response.getEntity();
-        content = entity.getContent();
+        URL urlObject = new URL(url);
+        connection = (HttpURLConnection) urlObject.openConnection();
+        connection.setRequestProperty("Range", "bytes=" + local + "-");
+        connection.setRequestProperty("User-Agent", "ZMusic Mod/" + ZMusic.getVersion());
+        connection.connect();
+
+        int responseCode = connection.getResponseCode();
+        if (responseCode >= 200 && responseCode < 300) {
+            content = new BufferedInputStream(connection.getInputStream());
+        } else {
+            throw new IOException("Failed to connect, response code: " + responseCode);
+        }
     }
 
     @SuppressWarnings("AlibabaMethodTooLong")
@@ -199,7 +197,6 @@ public class MusicPlayer extends InputStream {
                         break;
                     }
                 }
-                getClose();
                 streamClose();
                 decodeClose();
                 while (!isClose && AL10.alGetSourcei(index,
@@ -279,17 +276,14 @@ public class MusicPlayer extends InputStream {
         semaphore.release();
     }
 
-    private void getClose() {
-        if (get != null && !get.isAborted()) {
-            get.abort();
-            get = null;
-        }
-    }
-
     private void streamClose() throws IOException {
         if (content != null) {
             content.close();
             content = null;
+        }
+        if (connection != null) {
+            connection.disconnect();
+            connection = null;
         }
     }
 
@@ -318,7 +312,7 @@ public class MusicPlayer extends InputStream {
             int temp = content.read(buf, off, len);
             local += temp;
             return temp;
-        } catch (ConnectionClosedException | SocketException ex) {
+        } catch (IOException ex) {
             connect();
             return read(buf, off, len);
         }
@@ -335,7 +329,6 @@ public class MusicPlayer extends InputStream {
     }
 
     public void setLocal(long local) throws IOException {
-        getClose();
         streamClose();
         this.local = local;
         connect();

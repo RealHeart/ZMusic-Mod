@@ -1,10 +1,10 @@
 package me.zhenxin.zmusic;
 
-import me.zhenxin.zmusic.player.MusicPlayer;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 import me.zhenxin.zmusic.manager.SoundManager;
+import me.zhenxin.zmusic.player.MusicPlayer;
 
 
 /**
@@ -22,6 +22,8 @@ public class ZMusic {
     @Getter
     @Setter
     private static SoundManager soundManager;
+    @Getter
+    private static String version = "3.1.0";
 
     public static void onEnable() {
         player = new MusicPlayer();

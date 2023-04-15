@@ -28,7 +28,7 @@ subprojects {
     apply plugin: 'java-library'
 
     group = "me.zhenxin"
-    version = "3.0.0"
+    version = "3.1.0-dev" + gitCommitHash()
 
     dependencies {
         compileOnly("org.projectlombok:lombok:1.18.26")
