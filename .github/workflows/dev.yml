@@ -24,6 +24,13 @@ jobs:
         run: chmod +x gradlew
       - name: Build with Gradle
         run: ./gradlew clean build --no-daemon
+      # Fabric 1.19.4
+      - name: Upload Artifact (Fabric 1.19.4)
+        uses: actions/upload-artifact@v3
+        with:
+          name: 'ZMusic Fabric 1.19.4'
+          path: |
+            zmusic-fabric/zmusic-fabric-1.19.4/build/libs/**.jar
       # Fabric 1.19.3
       - name: Upload Artifact (Fabric 1.19.3)
         uses: actions/upload-artifact@v3
@@ -31,7 +38,14 @@ jobs:
           name: 'ZMusic Fabric 1.19.3'
           path: |
             zmusic-fabric/zmusic-fabric-1.19.3/build/libs/**.jar
-      # Fabric 1.19.3
+      # Fabric 1.19.2
+      - name: Upload Artifact (Fabric 1.19.2)
+        uses: actions/upload-artifact@v3
+        with:
+          name: 'ZMusic Fabric 1.19.2'
+          path: |
+            zmusic-fabric/zmusic-fabric-1.19.2/build/libs/**.jar
+      # Fabric 1.18.2
       - name: Upload Artifact (Fabric 1.18.2)
         uses: actions/upload-artifact@v3
         with:
@@ -67,6 +81,13 @@ jobs:
           path: |
             zmusic-fabric/zmusic-fabric-1.14.4/build/libs/**.jar
 
+      # Forge 1.19.4
+      - name: Upload Artifact (Forge 1.19.4)
+        uses: actions/upload-artifact@v3
+        with:
+          name: 'ZMusic Forge 1.19.4'
+          path: |
+            zmusic-forge/zmusic-forge-1.19.4/build/libs/**.jar
       # Forge 1.19.3
       - name: Upload Artifact (Forge 1.19.3)
         uses: actions/upload-artifact@v3
@@ -74,6 +95,13 @@ jobs:
           name: 'ZMusic Forge 1.19.3'
           path: |
             zmusic-forge/zmusic-forge-1.19.3/build/libs/**.jar
+      # Forge 1.19.2
+      - name: Upload Artifact (Forge 1.19.2)
+        uses: actions/upload-artifact@v3
+        with:
+          name: 'ZMusic Forge 1.19.2'
+          path: |
+            zmusic-forge/zmusic-forge-1.19.2/build/libs/**.jar
       # Forge 1.18.2
       - name: Upload Artifact (Forge 1.18.2)
         uses: actions/upload-artifact@v3

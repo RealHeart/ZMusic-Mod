@@ -1,0 +1,16 @@
+plugins {
+    id 'net.minecraftforge.gradle' version '5.1.+'
+}
+
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+minecraft {
+    mappings channel: 'official', version: '1.19.2'
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.19.2-43.2.0'
+
+    implementation project(":zmusic-core")
+}
