@@ -18,6 +18,7 @@ rootProject.name = "ZMusic-Mod"
 include("zmusic-core")
 include(
         "zmusic-fabric",
+        "zmusic-fabric:zmusic-fabric-1.20",
         "zmusic-fabric:zmusic-fabric-1.19.4",
         "zmusic-fabric:zmusic-fabric-1.19.3",
         "zmusic-fabric:zmusic-fabric-1.19.2",
@@ -30,6 +31,7 @@ include(
 
 include(
         "zmusic-forge",
+        "zmusic-forge:zmusic-forge-1.20",
         "zmusic-forge:zmusic-forge-1.19.4",
         "zmusic-forge:zmusic-forge-1.19.3",
         "zmusic-forge:zmusic-forge-1.19.2",
