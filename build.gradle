@@ -1,3 +1,8 @@
+//https://github.com/FabricMC/fabric-loom/issues/1036
+plugins {
+    id("fabric-loom") version "1.6-SNAPSHOT" apply false
+}
+
 def gitCommitHash = {
     def cmd = "git rev-parse --short HEAD"
     try {
