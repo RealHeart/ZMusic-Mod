@@ -1,9 +1,11 @@
 plugins {
-    id 'net.minecraftforge.gradle' version '5.1.+'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
 }
 
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
 
 minecraft {
     mappings channel: 'snapshot', version: '20190719-1.14.3'
@@ -13,4 +15,8 @@ dependencies {
     minecraft 'net.minecraftforge:forge:1.14.4-28.2.26'
 
     implementation project(":zmusic-core")
+}
+
+jar {
+    dependsOn(":zmusic-core:jar")
 }
