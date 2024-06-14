@@ -1,3 +1,8 @@
+//https://github.com/FabricMC/fabric-loom/issues/1036
+plugins {
+    id("fabric-loom") version "1.6-SNAPSHOT" apply false
+}
+
 def gitCommitHash = {
     def cmd = "git rev-parse --short HEAD"
     try {
@@ -31,8 +36,8 @@ subprojects {
     version = "3.2.0"
 
     dependencies {
-        compileOnly("org.projectlombok:lombok:1.18.26")
-        annotationProcessor("org.projectlombok:lombok:1.18.26")
+        compileOnly("org.projectlombok:lombok:1.18.30")
+        annotationProcessor("org.projectlombok:lombok:1.18.30")
     }
 
     jar {

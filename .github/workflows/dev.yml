@@ -13,17 +13,35 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Setup Java
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
-          java-version: '17'
+          java-version: |
+            8
+            16
+            17
+            21
           cache: 'gradle'
       - name: Setup Gradle
         run: chmod +x gradlew
       - name: Build with Gradle
         run: ./gradlew clean build --no-daemon
+      # Fabric 1.21
+      - name: Upload Artifact (Fabric 1.21)
+        uses: actions/upload-artifact@v3
+        with:
+          name: 'ZMusic Fabric 1.21'
+          path: |
+            zmusic-fabric/zmusic-fabric-1.21/build/libs/**.jar
+      # Fabric 1.20.5
+      - name: Upload Artifact (Fabric 1.20.5)
+        uses: actions/upload-artifact@v3
+        with:
+          name: 'ZMusic Fabric 1.20.5'
+          path: |
+            zmusic-fabric/zmusic-fabric-1.20.5/build/libs/**.jar
       # Fabric 1.20
       - name: Upload Artifact (Fabric 1.20)
         uses: actions/upload-artifact@v3
