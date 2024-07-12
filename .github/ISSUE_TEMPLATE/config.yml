@@ -2,3 +2,4 @@ blank_issues_enabled: false
 contact_links:
   - name: Submit Issue
     url: https://github.com/RealHeart/ZMusic/issues/new/choose
+    about: ZMusic-issues
