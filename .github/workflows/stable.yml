@@ -1,6 +1,7 @@
 name: Stable Build
 
 on:
+  workflow_dispatch:
   push:
     tags:
       - 'v*'
