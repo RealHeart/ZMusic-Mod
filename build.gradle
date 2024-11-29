@@ -36,8 +36,8 @@ subprojects {
     version = "3.2.0"
 
     dependencies {
-        compileOnly("org.projectlombok:lombok:1.18.30")
-        annotationProcessor("org.projectlombok:lombok:1.18.30")
+        compileOnly("org.projectlombok:lombok:1.18.36")
+        annotationProcessor("org.projectlombok:lombok:1.18.36")
     }
 
     jar {
